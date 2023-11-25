@@ -1,5 +1,5 @@
 const express = require("express");
-const puppeteer = require("puppeteer-core");
+const puppeteer = require("puppeteer");
 const cors = require("cors");
 
 const app = express();
@@ -12,7 +12,7 @@ const web_base_url = "https://entrackr.com/category/news";
 
 const getData = async (website_url) => {
   let headings, images, authors, dates, links;
-  const browser = await puppeteer.launch({ headless: "new" });
+  const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
 
   // Set viewport width and height
@@ -68,7 +68,7 @@ const getData = async (website_url) => {
 };
 
 const getLastPageNumber = async (website_url) => {
-  const browser = await puppeteer.launch({ headless: "new" });
+  const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
 
   // Set viewport width and height
@@ -89,7 +89,7 @@ const getLastPageNumber = async (website_url) => {
 
 const getArticle = async (url) => {
   let heading, data;
-  const browser = await puppeteer.launch({ headless: "new" });
+  const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
 
   // Set viewport width and height

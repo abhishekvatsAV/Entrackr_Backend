@@ -12,7 +12,7 @@ const web_base_url = "https://entrackr.com/category/news";
 
 const getData = async (website_url) => {
   let headings, images, authors, dates, links;
-  const browser = await puppeteer.launch({ headless: "new" });
+  const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
 
   // Set viewport width and height
@@ -68,7 +68,7 @@ const getData = async (website_url) => {
 };
 
 const getLastPageNumber = async (website_url) => {
-  const browser = await puppeteer.launch({ headless: "new" });
+  const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
 
   // Set viewport width and height
@@ -89,7 +89,7 @@ const getLastPageNumber = async (website_url) => {
 
 const getArticle = async (url) => {
   let heading, data;
-  const browser = await puppeteer.launch({ headless: "new" });
+  const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
 
   // Set viewport width and height

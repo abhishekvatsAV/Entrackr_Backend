@@ -97,6 +97,7 @@ const getLastPageNumber = async (website_url) => {
     );
     return Array.from(elements).map((element) => element.textContent);
   });
+  console.log("🔥  file: index.js:100  pageNumbers: ", pageNumbers);
 
   await browser.close();
 

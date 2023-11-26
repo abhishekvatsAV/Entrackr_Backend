@@ -11,21 +11,23 @@ app.use(express.static("public"));
 
 const web_base_url = "https://entrackr.com/category/news";
 
+const puppeteer_options = {
+  headless: "new",
+  args: [
+    "--disable-setuid-sandbox",
+    "--no-sandbox",
+    "--single-process",
+    "--no-zygote",
+  ],
+  executablePath:
+    process.env.NODE_ENV === "production"
+      ? process.env.PUPPETEER_EXECUTABLE_PATH
+      : puppeteer.executablePath(),
+};
+
 const getData = async (website_url) => {
   let headings, images, authors, dates, links;
-  const browser = await puppeteer.launch({
-    headless: "new",
-    args: [
-      "--disable-setuid-sandbox",
-      "--no-sandbox",
-      "--single-process",
-      "--no-zygote",
-    ],
-    executablePath:
-      process.env.NODE_ENV === "production"
-        ? process.env.PUPPETEER_EXECUTABLE_PATH
-        : puppeteer.executablePath(),
-  });
+  const browser = await puppeteer.launch(puppeteer_options);
   const page = await browser.newPage();
 
   // Set viewport width and height
@@ -81,10 +83,7 @@ const getData = async (website_url) => {
 };
 
 const getLastPageNumber = async (website_url) => {
-  const browser = await puppeteer.launch({
-    headless: "new",
-    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH,
-  });
+  const browser = await puppeteer.launch(puppeteer_options);
   const page = await browser.newPage();
 
   // Set viewport width and height
@@ -106,10 +105,7 @@ const getLastPageNumber = async (website_url) => {
 
 const getArticle = async (url) => {
   let heading, data;
-  const browser = await puppeteer.launch({
-    headless: "new",
-    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH,
-  });
+  const browser = await puppeteer.launch(puppeteer_options);
   const page = await browser.newPage();
 
   // Set viewport width and height

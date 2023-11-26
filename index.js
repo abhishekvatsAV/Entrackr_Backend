@@ -100,7 +100,7 @@ const getLastPageNumber = async (website_url) => {
 
   await browser.close();
 
-  return pageNumbers.at(-2).split("e")[1];
+  return pageNumbers.at(-2)?.split("e")[1];
 };
 
 const getArticle = async (url) => {

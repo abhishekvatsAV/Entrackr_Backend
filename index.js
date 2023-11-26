@@ -16,10 +16,7 @@ console.log("⛵️⛵️⛵️⛵️⛵️ node_env: ", process.env.NODE_ENV);
 const puppeteer_options = {
   headless: "new",
 
-  executablePath:
-    process.env.NODE_ENV === "production"
-      ? process.env.PUPPETEER_EXECUTABLE_PATH
-      : puppeteer.executablePath(),
+  executablePath: process.env.PUPPETEER_EXECUTABLE_PATH,
 };
 
 const getData = async (website_url) => {

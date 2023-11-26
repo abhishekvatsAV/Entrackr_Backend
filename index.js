@@ -11,13 +11,11 @@ app.use(express.static("public"));
 
 const web_base_url = "https://entrackr.com/category/news";
 
+console.log("⛵️⛵️⛵️⛵️⛵️ node_env: ", process.env.NODE_ENV);
+
 const puppeteer_options = {
-  args: [
-    "--disable-setuid-sandbox",
-    "--no-sandbox",
-    "--single-process",
-    "--no-zygote",
-  ],
+  headless: "new",
+
   executablePath:
     process.env.NODE_ENV === "production"
       ? process.env.PUPPETEER_EXECUTABLE_PATH

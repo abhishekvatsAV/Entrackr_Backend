@@ -12,7 +12,6 @@ app.use(express.static("public"));
 const web_base_url = "https://entrackr.com/category/news";
 
 const puppeteer_options = {
-  headless: "new",
   args: [
     "--disable-setuid-sandbox",
     "--no-sandbox",
